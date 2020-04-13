@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from "react-router-dom";
 import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import TopNavigation from './components/TopNavigation'
+import Home from './containers/Home';
+import Detail from './containers/Detail';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#03210E"
+    }
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+          <BrowserRouter>
+            <React.Fragment>
+              <TopNavigation />
+              <header className="App-header">
+                <div className="container">
+                  <Route exact path="/" component={Home} />
+                  <Route path="/detail/:movieId" component={Detail} />
+                </div>
+              </header>
+            </React.Fragment>
+          </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
