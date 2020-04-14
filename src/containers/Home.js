@@ -24,8 +24,9 @@ export default function Home() {
     const [movies_1980, setMovies_1980] = useState(null); //1980年の映画をpopularityでソート
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         let data;
-        axios.get('https://api.themoviedb.org/3/discover/movie',{
+        axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
             params:{
                 api_key: process.env.REACT_APP_DEV_API_KEY,
                 language: "ja-JA",
@@ -33,32 +34,12 @@ export default function Home() {
                 include_video: false,
                 page: 1,
                 with_genres: 27,
-                with_original_language: 'ja'
-
+                primary_release_year: 2020
             }
         })
         .then(res => {
             data = res.data.results;
-            setJapaneseMovies(data);
-            return null;
-        })
-        .then(() => {
-            axios.get('https://api.themoviedb.org/3/discover/movie',{
-                params:{
-                    api_key: process.env.REACT_APP_DEV_API_KEY,
-                    language: "ja-JA",
-                    sort_by: "popularity.desc",
-                    include_video: false,
-                    page: 1,
-                    with_genres: 27,
-                    primary_release_year: 2020
-                }
-            })
-            .then(res => {
-                data = res.data.results;
-                setRecentReleasedMovies(data);
-                return null;
-            })
+            setRecentReleasedMovies(data);
             return null;
         })
         .then(() => {
@@ -74,14 +55,34 @@ export default function Home() {
                 }
             })
             .then(res => {
-                let data = res.data.results;
+                data = res.data.results;
                 setHighVoteAverageMovie(data);
                 return null;
             })
             return null;
         })
         .then(() => {
-            axios.get('https://api.themoviedb.org/3/discover/movie',{
+            axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
+                params:{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                    language: "ja-JA",
+                    sort_by: "popularity.desc",
+                    include_video: false,
+                    page: 1,
+                    with_genres: 27,
+                    with_original_language: 'ja'
+    
+                }
+            })
+            .then(res => {
+                let data = res.data.results;
+                setJapaneseMovies(data);
+                return null;
+            })
+            return null;
+        })
+        .then(() => {
+            axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
                 params:{
                     api_key: process.env.REACT_APP_DEV_API_KEY,
                     language: "ja-JA",
@@ -116,12 +117,12 @@ export default function Home() {
     return (
         <div>
             <Search />
-            <Typography className={classes.title}>日本のホラー映画</Typography>
-            <MovieGridList movies={japaneseMovies} width={width}/>
             <Typography className={classes.title}>2020年のホラー映画</Typography>
             <MovieGridList movies={recentReleasedMovies} width={width}/>
             <Typography className={classes.title}>評価の高いホラー映画</Typography>
             <MovieGridList movies={highVoteAverageMovie} width={width}/>
+            <Typography className={classes.title}>日本のホラー映画</Typography>
+            <MovieGridList movies={japaneseMovies} width={width}/>
             <Typography className={classes.title}>1980年代以前のホラー映画</Typography>
             <MovieGridList movies={movies_1980} width={width}/>
         </div>

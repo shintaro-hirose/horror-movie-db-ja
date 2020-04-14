@@ -10,7 +10,7 @@ import noImage from '../images/no-image.png';
 
 
 
-export default function MovieBox({movie, rank}) {
+export default function MovieBox({movie}) {
     const useStyles = makeStyles(() => ({
         poster: {
             width: "150px",

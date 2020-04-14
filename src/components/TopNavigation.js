@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'static'
     },
     logo:{
-        height: '64px',
+        width:'60%'
     }
   }));
 
