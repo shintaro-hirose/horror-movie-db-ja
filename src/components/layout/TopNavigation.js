@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 
-import logo from '../images/horror-movie-logo-3.svg'
+import logo from '../../images/horror-movie-logo-3.svg'
 
 const useStyles = makeStyles((theme) => ({
     root: {

@@ -2,8 +2,8 @@ import React,{useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 //components
-import MovieGridList from '../components/MovieGridList';
-import Search from '../components/Search'
+import MovieGridList from '../components/Home/MovieGridList';
+import Search from '../components/Home/Search'
 
 import axios from 'axios';
 

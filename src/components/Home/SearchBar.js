@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState} from 'react';
+import {withRouter} from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
@@ -23,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
-    pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
+    zIndex: 100,
     justifyContent: 'center',
+    cursor: 'pointer'
   },
   inputRoot: {
     color: 'inherit',
@@ -43,13 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar() {
+function SearchBar(props) {
+  const [keyword,setKeyword] = useState("");
   const classes = useStyles();
 
+  const handleChange = (e) => {
+    setKeyword(e.target.value)
+  }
+  const handleSubmit = () => {
+    if(keyword.trim() === '') return;
+    props.history.push(`/search/${encodeURI(keyword)}`)
+  }
+
   return (
+    <div>
     <div className={classes.search}>
-        <div className={classes.searchIcon}>
-        <SearchIcon />
+      <form onSubmit={handleSubmit}>
+        <div className={classes.searchIcon} >
+          <SearchIcon type="submit" onClick={handleSubmit}/>
         </div>
         <InputBase
         placeholder="映画名、人物名で検索..."
@@ -58,8 +71,12 @@ export default function SearchBar() {
             input: classes.inputInput,
         }}
         fullWidth={true}
+        onChange={handleChange}
         inputProps={{ 'aria-label': 'search' }}
         />
+      </form>
+  </div>
   </div>
 );
 }
+export default withRouter(SearchBar);

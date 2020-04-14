@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {makeStyles} from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import searchBackgroundImage from '../images/child-backdrop-4.png';
+import searchBackgroundImage from '../../images/child-backdrop-4.png';
 import SearchBar from './SearchBar'
 
 const useStyles = makeStyles((theme) => ({

@@ -3,11 +3,11 @@ import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
-import DetailHeader from '../components/DetailHeader';
-import CastGridList from '../components/CastGridList';
-import MovieGridList from '../components/MovieGridList';
-import DetailVideo from '../components/DetailVideo';
-import DetailDiscription from '../components/DetailDiscription';
+import DetailHeader from '../components/Detail/DetailHeader';
+import CastGridList from '../components/Detail/CastGridList';
+import MovieGridList from '../components/Home/MovieGridList';
+import DetailVideo from '../components/Detail/DetailVideo';
+import DetailDiscription from '../components/Detail/DetailDiscription';
 
 import loadingImage from '../images/sheep-2.png';
 

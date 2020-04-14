@@ -45,6 +45,15 @@ export default function DetailDiscription({movieDetails, crew}) {
             color: '#424242',
             marginBottom: '10px'
         },
+        score:{
+            display: 'inline',
+            lineHeight: '72px',
+            fontSize: '20px',
+            [theme.breakpoints.down('xs')]: {
+                fontSize: '10px',
+              },
+            fontWeight: 'lighter'
+        }
     }));
     const date = movieDetails.release_date.slice(0,4) + '年' + movieDetails.release_date.slice(5,7) + '月' + movieDetails.release_date.slice(8,10)+ '日'
 
@@ -72,7 +81,7 @@ export default function DetailDiscription({movieDetails, crew}) {
                                 <Typography className={classes.rate}>{movieDetails.vote_average.toFixed(1)}</Typography>
                             </Box>
                             <Box>
-                                <Typography style={{display: 'inline', lineHeight: '72px', fontSize: '1.2vw', fontWeight: 'lighter'}}>TMDBユーザースコア</Typography>
+                                <Typography className={classes.score}>TMDBユーザースコア</Typography>
                             </Box>
                         </Box>
                         <Typography className={classes.tagline}>{movieDetails.tagline}</Typography>                

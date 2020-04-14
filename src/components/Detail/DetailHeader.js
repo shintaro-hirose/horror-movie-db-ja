@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import DetailDiscription from './DetailDiscription'
 
-import noImage from '../images/no-image.png'
+import noImage from '../../images/no-image.png'
 
 export default function DetailHeader({movieDetails, crew}) {
 
