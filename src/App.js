@@ -6,6 +6,8 @@ import TopNavigation from './components/layout/TopNavigation'
 import Home from './containers/Home';
 import Detail from './containers/Detail';
 import SearchResult from './containers/SearchResult'
+import About from './flatPages/About'
+import Footer from './components/layout/Footer';
 
 const theme = createMuiTheme({
   palette: {
@@ -27,11 +29,13 @@ function App() {
                   <Route exact path="/" component={Home} />
                   <Route path="/detail/:movieId" component={Detail} />
                   <Route path="/search" component={SearchResult} />
+                  <Route path="/about" component={About} />
                 </div>
               </header>
+              <Footer />
             </React.Fragment>
           </BrowserRouter>
-          <footer>© 2020 ホラー映画DB</footer>
+          
       </div>
     </ThemeProvider>
   );
