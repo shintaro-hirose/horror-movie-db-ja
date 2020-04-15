@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       }
 }))
 
-export default function Detail(props) {
+function Detail(props) {
     const classes = useStyles();
     const movieId = props.match.params.movieId;
     const [movieDetails, setMovieDetails] = useState(null);
@@ -163,3 +163,5 @@ export default function Detail(props) {
         </div>
     )
 }
+  
+export default Detail;

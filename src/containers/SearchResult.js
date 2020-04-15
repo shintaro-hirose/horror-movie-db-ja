@@ -1,51 +1,48 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
+import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import ResultMovieBox from '../components/SearchResult/ResultMovieBox';
-import axios from 'axios';
+import SearchBar from '../components/Home/SearchBar';
 import loadingImage from '../images/sheep-2.png';
+//redux
+import { connect } from 'react-redux';
+import { Typography } from '@material-ui/core';
+
 
 const useStyles = makeStyles(() => ({
     loading: {
         width: '120px',
         height: '120px',
+      },
+      searchBox:{
+          maxWidth: '800px',
+          margin: '32px auto',
+          textAlign: 'left',
       }
 }))
 
-export default function SearchResult(props) {
+function SearchResult(props) {
     const classes = useStyles();
-    const keyword = props.match.params.keyword;
-    const [results, setResults] = useState(null);
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        axios.get(`https://api.themoviedb.org/3/search/movie/`,{
-            params: {
-                api_key: process.env.REACT_APP_DEV_API_KEY,
-                language: "ja-JA",
-                query: keyword,
-                include_adult: true,
-                page: 1,
-            }
-        })
-        .then(res => {
-            let data = res.data.results;
-            setResults(data);
-            console.log(data);
-            return null;
-        })
-        .catch(err => {
-            console.log('err:', err);
-            return null;
-        })
-    },[])
+    const { UI:{loading, errors}, data:{searchResultMovies,searchResultType,searchResultWord} } = props;
+    const word = searchResultType === "word" ? "の検索結果" :
+        searchResultType === "keyword" ? "によるキーワード検索結果" :
+            searchResultType === "people" ? "の出演作品" : "";
+
     return (
         <div>
-            {results ? (
-                results.length === 0 ? (
+            <Typography variant="h5">{searchResultWord} {word}</Typography>
+            <div className={classes.searchBox}>
+                <SearchBar />
+            </div>
+            {!loading && searchResultMovies ? (
+                searchResultMovies.length === 0 ? (
                     <p>no results</p>
                 ) : (
-                    results.map((item) => {
+                    searchResultMovies.map((item,index) => {
                         return(
-                            <ResultMovieBox result={item}/>
+                            <ResultMovieBox movie={item} key={index}/>
                         )
                     })
                     
@@ -60,3 +57,17 @@ export default function SearchResult(props) {
         </div>
     )
 }
+
+SearchResult.propTypes = {
+    data: PropTypes.object.isRequired,
+    UI: PropTypes.object.isRequired,
+  };
+  
+const mapStateToProps = (state) => ({
+    data: state.data,
+    UI: state.UI,
+  });
+  
+export default connect(
+      mapStateToProps
+    )(withRouter(SearchResult));
