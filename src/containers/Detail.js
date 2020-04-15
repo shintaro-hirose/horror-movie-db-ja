@@ -8,6 +8,7 @@ import CastGridList from '../components/Detail/CastGridList';
 import MovieGridList from '../components/Home/MovieGridList';
 import DetailVideo from '../components/Detail/DetailVideo';
 import DetailDiscription from '../components/Detail/DetailDiscription';
+import Keywords from '../components/Detail/Keywords';
 
 import loadingImage from '../images/sheep-2.png';
 
@@ -38,6 +39,8 @@ export default function Detail(props) {
     const [cast, setCast] = useState(null);
     const [similarMovies, setSimilarMovies] = useState(null);
     const [videoData, setVideoData] = useState(null);
+    const [reviews, setReviews] = useState(null);
+    const [keywords, setKeywords] = useState(null);
     const [width, setWidth] = useState(0);
 
     useEffect(() => {
@@ -67,6 +70,33 @@ export default function Detail(props) {
             .then(res => {
                 let data = res.data.results;
                 setVideoData(data);
+                return null;
+            })
+            return null;
+        })
+        .then(() => {
+            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews`,{
+                params :{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                    page: 1,
+                }
+            })
+            .then(res => {
+                let data = res.data.results;
+                setReviews(data);
+                return null;
+            })
+            return null;
+        })
+        .then(() => {
+            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/keywords`,{
+                params :{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                }
+            })
+            .then(res => {
+                let data = res.data.keywords;
+                setKeywords(data);
                 return null;
             })
             return null;
@@ -114,6 +144,10 @@ export default function Detail(props) {
                         <Typography className={classes.titleText}>予告編</Typography>
                     </Box>
                     <DetailVideo videoData={videoData}/>
+                    <Box className={classes.titleBox}>
+                        <Typography className={classes.titleText}>キーワード</Typography>
+                    </Box>
+                    <Keywords keywords={keywords}/>
                     <Box className={classes.titleBox}>
                         <Typography className={classes.titleText}>おすすめ作品</Typography>
                     </Box>

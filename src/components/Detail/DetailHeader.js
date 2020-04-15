@@ -15,7 +15,7 @@ export default function DetailHeader({movieDetails, crew}) {
             height: 'auto',
             backgroundColor: "grey",
             backgroundSize: 'cover' , 
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})`,
+            backgroundImage: movieDetails.backdrop_path ? `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})` : 'none',
         },
         poster:{
             width: '100%'
