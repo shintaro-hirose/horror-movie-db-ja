@@ -42,65 +42,65 @@ export default function Home() {
             setRecentReleasedMovies(data);
             return null;
         })
-        // .then(() => {
-        //     axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=10',{
-        //         params:{
-        //             api_key: process.env.REACT_APP_DEV_API_KEY,
-        //             language: "ja-JA",
-        //             sort_by: "vote_average.desc",
-        //             include_video: false,
-        //             page: 1,
-        //             with_genres: 27,
+        .then(() => {
+            axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=10',{
+                params:{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                    language: "ja-JA",
+                    sort_by: "vote_average.desc",
+                    include_video: false,
+                    page: 1,
+                    with_genres: 27,
     
-        //         }
-        //     })
-        //     .then(res => {
-        //         data = res.data.results;
-        //         setHighVoteAverageMovie(data);
-        //         return null;
-        //     })
-        //     return null;
-        // })
-        // .then(() => {
-        //     axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
-        //         params:{
-        //             api_key: process.env.REACT_APP_DEV_API_KEY,
-        //             language: "ja-JA",
-        //             sort_by: "popularity.desc",
-        //             include_video: false,
-        //             page: 1,
-        //             with_genres: 27,
-        //             with_original_language: 'ja'
+                }
+            })
+            .then(res => {
+                data = res.data.results;
+                setHighVoteAverageMovie(data);
+                return null;
+            })
+            return null;
+        })
+        .then(() => {
+            axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
+                params:{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                    language: "ja-JA",
+                    sort_by: "popularity.desc",
+                    include_video: false,
+                    page: 1,
+                    with_genres: 27,
+                    with_original_language: 'ja'
     
-        //         }
-        //     })
-        //     .then(res => {
-        //         let data = res.data.results;
-        //         setJapaneseMovies(data);
-        //         return null;
-        //     })
-        //     return null;
-        // })
-        // .then(() => {
-        //     axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
-        //         params:{
-        //             api_key: process.env.REACT_APP_DEV_API_KEY,
-        //             language: "ja-JA",
-        //             sort_by: "popularity.desc",
-        //             include_video: false,
-        //             page: 1,
-        //             with_genres: 27,
-        //             year: 1989
+                }
+            })
+            .then(res => {
+                let data = res.data.results;
+                setJapaneseMovies(data);
+                return null;
+            })
+            return null;
+        })
+        .then(() => {
+            axios.get('https://api.themoviedb.org/3/discover/movie?vote_count.gte=5',{
+                params:{
+                    api_key: process.env.REACT_APP_DEV_API_KEY,
+                    language: "ja-JA",
+                    sort_by: "popularity.desc",
+                    include_video: false,
+                    page: 1,
+                    with_genres: 27,
+                    year: 1989
     
-        //         }
-        //     })
-        //     .then(res => {
-        //         let data = res.data.results;
-        //         setMovies_1980(data);
-        //         return null;
-        //     })
-        //     return null;
-        // })
+                }
+            })
+            .then(res => {
+                let data = res.data.results;
+                setMovies_1980(data);
+                return null;
+            })
+            return null;
+        })
         .catch(err => {
             console.log('err:', err);
             return null;
