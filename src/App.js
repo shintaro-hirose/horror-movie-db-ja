@@ -26,7 +26,7 @@ function App() {
                 <div className="container">
                   <Route exact path="/" component={Home} />
                   <Route path="/detail/:movieId" component={Detail} />
-                  <Route path="/search/:keyword" component={SearchResult} />
+                  <Route path="/search" component={SearchResult} />
                 </div>
               </header>
             </React.Fragment>

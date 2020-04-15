@@ -1,8 +1,13 @@
 import React,{useState} from 'react';
+import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+//redux
+import { connect } from 'react-redux';
+import { searchByWord } from '../../redux/actions/dataActions';
+
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -52,9 +57,10 @@ function SearchBar(props) {
   const handleChange = (e) => {
     setKeyword(e.target.value)
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if(keyword.trim() === '') return;
-    props.history.push(`/search/${encodeURI(keyword)}`)
+    props.searchByWord(keyword,props.history);
   }
 
   return (
@@ -65,7 +71,7 @@ function SearchBar(props) {
           <SearchIcon type="submit" onClick={handleSubmit}/>
         </div>
         <InputBase
-        placeholder="映画名、人物名で検索..."
+        placeholder="映画名で検索..."
         classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
@@ -79,4 +85,15 @@ function SearchBar(props) {
   </div>
 );
 }
-export default withRouter(SearchBar);
+
+SearchBar.propTypes = {
+  searchByWord: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = () => ({
+});
+
+export default connect(
+    mapStateToProps,
+  { searchByWord }
+  )(withRouter(SearchBar));
