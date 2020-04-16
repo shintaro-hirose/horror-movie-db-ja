@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ホラー映画DB
 
-## Available Scripts
+TMDB APIを利用して、ホラー映画を中心に検索できます。
 
-In the project directory, you can run:
+提供する情報
 
-### `yarn start`
+- ポスター
+- バックドロップ画像
+- 概要
+- 制作年
+- キーワード
+- 予告動画
+- キャスト
+- 他のおすすめ作品
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[デモ](https://horror-movie-db.web.app/search)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+<img width="600" alt="スクリーンショット 2020-04-16 12 51 17" src="https://user-images.githubusercontent.com/48212107/79412704-167ecf80-7fe1-11ea-8513-fdce1e6384b5.png">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="600" alt="スクリーンショット 2020-04-16 12 51 30" src="https://user-images.githubusercontent.com/48212107/79412720-20083780-7fe1-11ea-9202-75d263b7861d.png">
 
-### `yarn build`
+<img width="600" alt="スクリーンショット 2020-04-16 12 51 45" src="https://user-images.githubusercontent.com/48212107/79412732-2a2a3600-7fe1-11ea-9613-90296bfb7d87.png">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 使用した技術
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- フロントエンド: React, Redux, redux-thunk, Material-UI
 
-### `yarn eject`
+- Rest API: TMDB API, thunk/axiosによる非同期取得
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- デプロイ: Firebase Hosting
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ソースコード管理: Github
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+MIT
