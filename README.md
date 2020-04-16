@@ -13,7 +13,7 @@ TMDB APIを利用して、ホラー映画を中心に検索できます。
 - キャスト
 - 他のおすすめ作品
 
-[デモ](https://horror-movie-db.web.app/search)
+[デモ](https://horror-movie-db.web.app)
 
 
 <img width="600" alt="スクリーンショット 2020-04-16 12 51 17" src="https://user-images.githubusercontent.com/48212107/79412704-167ecf80-7fe1-11ea-8513-fdce1e6384b5.png">
